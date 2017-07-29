@@ -1,0 +1,76 @@
+ENTITIES
+
+*Fruit
+Meyve Assetlerinin tanımlaması
+
+*Fruits
+Zorluk derecesine göre değişen sıklıkta rastgele meyveler üretiliyor,
+bir listede tutuluyor. Ekrandan kaybolunca listeden siliniyor.
+
+*Player
+Oyuncu, accelerometer aracılığı ile meyvelerden kaçıyor.
+
+
+SCREENS
+
+*DifficultyScreen
+Zorluk derecesi seçim ekranı
+
+*FruitsScreen
+Oyun ekranı
+
+
+UTILITIES
+
+*Assets
+Tüm assetler TextureAtlas aracılığı ile burada işleniyor.
+
+*Constants
+Tüm sabitler burada
+
+
+Level
+Seviyeler
+
+UlduzGame
+Başlangıç kodu
+
+
+
+OVERLAYS
+
+Henüz bir çalışma yapılmadı.
+
+
+
+Genel Bakış
+
+İlkokul 1. sınıf öğrencilerini hedef alan, çok basit hareketlerle oynanabilmesi hedef
+alınan bir mobil uygulama. Ekranın bir bölümünde Öğrenciye basit matematik işlemleri sorulacak.
+Tepeden hızlanarak düşen meyvelerin üzerinde de sayılar yer alacak. O sayılardan bir tanesinde
+sorunun cevabı olan sayı olacak. Çocuk yanlış meyveyi yakalayınca bir Overlay,
+doğru meyveyi yakalayınca başka bir Overlay görünecek ve oyun her halükarda devam edecek.
+
+//TODO: Veri saklama
+iki sütunlu bir tablo
+Seviye ID, puan
+1
+2
+3
+4
+5
+.
+.
+
+//Her seviyede aldığı en yüksek puan kaydedilecek. Başlangıç değerleri 0
+Tablonun sonunda bir de seviye kilidi saklanacak. Kullanıcı ilk önce sadece 1. seviyedeki oyunu
+açıp oynayabilecek. İlerledikçe birer birer diğer seviyelerin de kilitleri açılacak.
+
+//TODO: seviyeler
+Menu ekranında tüm seviyeler görünecek. İlk başta sadece seviye 1 açık, diğerleri kilitli.
+Level geçişlerini nasıl yapmak gerekiyor bilmiyorum.
+
+Level 1 = Toplama ( a<10, b<10) (a+b)
+Level 2 = Çıkarma ( a>b, a<20) (a-b)
+Level 3 = Kesirlerde Toplama ( çeyrek, yarım ve tam üzerinde işlemler)
+Level 4 = Kesirlerde Çıkarma ( çeyrek, yarım ve tam üzerinde işlemler)

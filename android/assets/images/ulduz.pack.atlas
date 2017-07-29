@@ -1,0 +1,376 @@
+
+ulduz.pack.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+sound-open
+  rotate: false
+  xy: 2, 2
+  size: 1000, 1001
+  orig: 1000, 1001
+  offset: 0, 0
+  index: -1
+
+ulduz.pack2.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+pause-button
+  rotate: false
+  xy: 2, 2
+  size: 1000, 1000
+  orig: 1000, 1000
+  offset: 0, 0
+  index: -1
+
+ulduz.pack3.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+play-button
+  rotate: false
+  xy: 2, 2
+  size: 1000, 1000
+  orig: 1000, 1000
+  offset: 0, 0
+  index: -1
+
+ulduz.pack4.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+right
+  rotate: false
+  xy: 2, 2
+  size: 1000, 1000
+  orig: 1000, 1000
+  offset: 0, 0
+  index: -1
+
+ulduz.pack5.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+tik-button
+  rotate: false
+  xy: 2, 2
+  size: 1000, 1000
+  orig: 1000, 1000
+  offset: 0, 0
+  index: -1
+
+ulduz.pack6.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+tik-button-min
+  rotate: false
+  xy: 2, 2
+  size: 1000, 1000
+  orig: 1000, 1000
+  offset: 0, 0
+  index: -1
+
+ulduz.pack7.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Screenshot
+  rotate: false
+  xy: 504, 22
+  size: 508, 286
+  orig: 508, 286
+  offset: 0, 0
+  index: 1
+background1
+  rotate: false
+  xy: 2, 2
+  size: 500, 306
+  orig: 500, 306
+  offset: 0, 0
+  index: -1
+screenshot1
+  rotate: false
+  xy: 2, 2
+  size: 500, 306
+  orig: 500, 306
+  offset: 0, 0
+  index: -1
+screenshot2
+  rotate: false
+  xy: 2, 2
+  size: 500, 306
+  orig: 500, 306
+  offset: 0, 0
+  index: -1
+screenshot3
+  rotate: false
+  xy: 2, 2
+  size: 500, 306
+  orig: 500, 306
+  offset: 0, 0
+  index: -1
+question
+  rotate: false
+  xy: 2, 310
+  size: 1000, 711
+  orig: 1000, 711
+  offset: 0, 0
+  index: -1
+
+ulduz.pack8.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+apple-min
+  rotate: false
+  xy: 316, 189
+  size: 317, 398
+  orig: 317, 398
+  offset: 0, 0
+  index: -1
+asma-kilit
+  rotate: false
+  xy: 2, 2
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+boy-standing-left
+  rotate: false
+  xy: 716, 120
+  size: 83, 100
+  orig: 83, 100
+  offset: 0, 0
+  index: -1
+boy-standing-right
+  rotate: false
+  xy: 716, 18
+  size: 83, 100
+  orig: 83, 100
+  offset: 0, 0
+  index: -1
+boy-walk-1-left
+  rotate: false
+  xy: 801, 120
+  size: 83, 100
+  orig: 83, 100
+  offset: 0, 0
+  index: -1
+boy-walk-1-right
+  rotate: false
+  xy: 801, 18
+  size: 83, 100
+  orig: 83, 100
+  offset: 0, 0
+  index: -1
+boy-walk-2-left
+  rotate: false
+  xy: 886, 120
+  size: 83, 100
+  orig: 83, 100
+  offset: 0, 0
+  index: -1
+boy-walk-2-right
+  rotate: false
+  xy: 886, 18
+  size: 83, 100
+  orig: 83, 100
+  offset: 0, 0
+  index: -1
+boy-walk-3-left
+  rotate: false
+  xy: 804, 714
+  size: 83, 100
+  orig: 83, 100
+  offset: 0, 0
+  index: -1
+boy-walk-3-right
+  rotate: false
+  xy: 804, 612
+  size: 83, 100
+  orig: 83, 100
+  offset: 0, 0
+  index: -1
+close-button
+  rotate: false
+  xy: 104, 2
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+dereli-model
+  rotate: false
+  xy: 2, 589
+  size: 800, 429
+  orig: 800, 429
+  offset: 0, 0
+  index: -1
+girl-standing-left
+  rotate: false
+  xy: 889, 714
+  size: 83, 100
+  orig: 83, 100
+  offset: 0, 0
+  index: -1
+girl-standing-right
+  rotate: false
+  xy: 889, 612
+  size: 83, 100
+  orig: 83, 100
+  offset: 0, 0
+  index: -1
+home-button
+  rotate: false
+  xy: 206, 2
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+kupa
+  rotate: false
+  xy: 308, 2
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+left
+  rotate: false
+  xy: 410, 14
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+mute
+  rotate: false
+  xy: 512, 87
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+orange-min
+  rotate: false
+  xy: 635, 222
+  size: 366, 365
+  orig: 366, 365
+  offset: 0, 0
+  index: -1
+pause simgesi-min
+  rotate: false
+  xy: 614, 87
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+pear-min
+  rotate: false
+  xy: 2, 104
+  size: 312, 483
+  orig: 312, 483
+  offset: 0, 0
+  index: -1
+play simge-min
+  rotate: false
+  xy: 804, 918
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+sað ok-min
+  rotate: false
+  xy: 906, 918
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ses açýk simgesi-min
+  rotate: false
+  xy: 804, 816
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+soru iþareti-min
+  rotate: false
+  xy: 316, 116
+  size: 100, 71
+  orig: 100, 71
+  offset: 0, 0
+  index: -1
+tik iþareti-min
+  rotate: false
+  xy: 906, 816
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+
+ulduz.pack9.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+game-background
+  rotate: false
+  xy: 2, 561
+  size: 800, 429
+  orig: 800, 429
+  offset: 0, 0
+  index: -1
+girl-walk-1-left
+  rotate: false
+  xy: 804, 890
+  size: 83, 100
+  orig: 83, 100
+  offset: 0, 0
+  index: -1
+girl-walk-1-right
+  rotate: false
+  xy: 2, 104
+  size: 83, 100
+  orig: 83, 100
+  offset: 0, 0
+  index: -1
+girl-walk-2-left
+  rotate: false
+  xy: 430, 459
+  size: 83, 100
+  orig: 83, 100
+  offset: 0, 0
+  index: -1
+girl-walk-2-right
+  rotate: false
+  xy: 804, 788
+  size: 83, 100
+  orig: 83, 100
+  offset: 0, 0
+  index: -1
+girl-walk-3-left
+  rotate: false
+  xy: 889, 890
+  size: 83, 100
+  orig: 83, 100
+  offset: 0, 0
+  index: -1
+girl-walk-3-right
+  rotate: false
+  xy: 2, 2
+  size: 83, 100
+  orig: 83, 100
+  offset: 0, 0
+  index: -1
+lemon-min
+  rotate: false
+  xy: 2, 206
+  size: 426, 353
+  orig: 426, 353
+  offset: 0, 0
+  index: -1
