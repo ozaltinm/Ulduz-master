@@ -61,6 +61,9 @@ public class Assets implements Disposable, AssetErrorListener {
 
     public class UlduzAssets{
         public final AtlasRegion lemon;
+        public final AtlasRegion pear;
+        public final AtlasRegion orange;
+        public final AtlasRegion apple;
         public final AtlasRegion home;
         public final AtlasRegion play;
         public final AtlasRegion topScore;
@@ -115,6 +118,9 @@ public class Assets implements Disposable, AssetErrorListener {
             tik = atlas.findRegion(Constants.TIK_BUTTON);
 
             lemon = atlas.findRegion(Constants.LEMON);
+            pear = atlas.findRegion(Constants.PEAR);
+            orange = atlas.findRegion(Constants.ORANGE);
+            apple = atlas.findRegion(Constants.APPLE);
             home = atlas.findRegion(Constants.HOME_ASSET);
             play = atlas.findRegion(Constants.PLAY_ASSET);
             topScore = atlas.findRegion(Constants.TOP_SCORE_ASSET);

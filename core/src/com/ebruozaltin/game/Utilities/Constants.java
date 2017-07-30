@@ -20,11 +20,9 @@ public class Constants {
     //Assets
     public static final String TEXTURE_ATLAS = "images/ulduz.pack.atlas";
     public static final String LEMON = "lemon-min";
-    public static final String BANANA = "banana-min";
     public static final String APPLE = "apple-min";
     public static final String ORANGE = "orange-min";
     public static final String PEAR = "pear-min";
-    public static final String STRAWBERRY = "strawberry-min";
 
     public static final String HOME_ASSET = "home-button";
     public static final String PLAY_ASSET = "play-button";
@@ -71,14 +69,19 @@ public class Constants {
 
     //MENU SCREEN
     public static final float MENU_WORLD_SIZE = 480.0f;
-    public static final float MENU_LABEL_SCALE = 1.5f;
+    public static final float MENU_LABEL_SCALE = 2.0f;
 
     public static final String MENU_LABEL = "Merhaba Dostum!";
-    public static final String PLAY_LABEL = "PLAY";
-    public static final String TOPSCORE_LABEL = "En Yüksek Skor";
+    public static final float MENU_LABEL_MARGIN = 130.0f;
 
     public static final Vector2 TOPSCORE_BUTTON_SIZE = new Vector2(MENU_WORLD_SIZE/10, MENU_WORLD_SIZE/10);
+    public static final float TOP_SCORE_MARGIN = 20.0f;
+    public static final float LOCK_MARGIN = 370.0f;
 
+    public static final String MENU_LEVEL_1 = "Rakamlar";
+    public static final String MENU_LEVEL_2 = "Toplama";
+    public static final String MENU_LEVEL_3 = "Cikarma";
+    public static final String MENU_LEVEL_4 = "Oruntuler";
 
     //Spawns
     public static final float MEDIUM_SPAWNS_PER_SECOND = 0.7f;

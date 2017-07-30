@@ -70,13 +70,13 @@ public class HowToPlayScreen extends InputAdapter implements Screen {
     @Override
     public void render(float delta) {
         viewport.apply();
-        Gdx.gl.glClearColor(0,0,0,1);
+        Gdx.gl.glClearColor(0.5f,0.5f,0.5f,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.setProjectionMatrix(viewport.getCamera().combined);
         batch.begin();
 
-        batch.setColor(1,1,1,0.3f);
+        batch.setColor(1,1,1,0.2f);
         utils.drawTextureRegion(
                 batch,
                 backgroundRegion,
