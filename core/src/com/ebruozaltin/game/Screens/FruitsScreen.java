@@ -51,8 +51,12 @@ public class FruitsScreen extends InputAdapter implements Screen {
     Constants.State state;
 
     TextureRegion lemonRegion = Assets.instance.ulduzAssets.lemon;
+    TextureRegion pearRegion = Assets.instance.ulduzAssets.pear;
+    TextureRegion appleRegion = Assets.instance.ulduzAssets.apple;
+    TextureRegion orangeRegion = Assets.instance.ulduzAssets.orange;
     TextureRegion pauseRegion = Assets.instance.ulduzAssets.pause;
-
+    TextureRegion backgroundRegion = Assets.instance.ulduzAssets.gameBackground;
+    Vector2 backgroundSize;
     Utils utils;
 
     VictoryOverlay victoryOverlay;
@@ -101,6 +105,7 @@ public class FruitsScreen extends InputAdapter implements Screen {
         fruits = new Fruits(fruitsViewport, lemonRegion);
 
         Assets.instance.init();
+        backgroundSize = new Vector2(utils.setScale(backgroundRegion, 1.0f));
 
         Gdx.input.setInputProcessor(this);
         ArrayList<String> optionsList= LevelManager.getCurrentLevel().getCurrentQuestion().getOptionsList();
@@ -111,18 +116,9 @@ public class FruitsScreen extends InputAdapter implements Screen {
     }
 
     private void renderRunning(float delta){
-        //TODO: Her yeni soruya geçişte ekranda önce soru görünsün. 2-3 sn kadar sonra meyveler düşmeye başlasın.
 
         player.update(delta);
 
-        //TODO: Doğru meyveyi yakaladığında belirli bir süre VictoryOverlay görünsün
-        //TODO: Yanlış meyveyi yakaladığında belirli bir süre GameOverOverlay görünsün
-        //Her iki durumda da oyun devam etsin.
-        //Doğru meyve puanı 5, yanlış meyve 0
-        //Bir seviyede 10 tane soru sorulsun. Sonucunda ResultsScreen görünsün.
-        // 7 soruya doğru cevap verip en az 35 puan toplarsa bir sonraki seviyeye geçmeye
-        // hak kazansın. Aksi takdirde bu seviyeyi tekrar etsin. ResultsScreen ekranındaki
-        //mesaj da ona göre değişsin.
         int fruitIndex=player.hitByFruit(fruits);
         if(fruitIndex!=-1){
             questionPart.setViewAble(false);
@@ -155,19 +151,27 @@ public class FruitsScreen extends InputAdapter implements Screen {
             LevelManager.proceedNextQuestion();
         }
 
-        Gdx.gl.glClearColor(Constants.BACKGROUND_COLOR.r, Constants.BACKGROUND_COLOR.g, Constants.BACKGROUND_COLOR.b, 1);
+        Gdx.gl.glClearColor(0.5f,0.5f,0.5f,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
 
         //fruits
         fruitsViewport.apply(true);
         batch.begin();
         batch.setProjectionMatrix(fruitsViewport.getCamera().combined);
 
+        //background
+        batch.setColor(1,1,1,0.5f);
+        utils.drawTextureRegion(
+                batch,
+                backgroundRegion,
+                0,
+                0,
+                backgroundSize.x,
+                backgroundSize.y
+        );
+        batch.setColor(1,1,1,1);
 
-        //TODO: render'ın içinde her defasında işlem yaptırma (less significant)
         fruits.update(delta, lemonRegion);
-
 
         fruits.render(batch, lemonRegion);
 
@@ -201,7 +205,6 @@ public class FruitsScreen extends InputAdapter implements Screen {
         if(gameOverOverlay.isVisible()){
             gameOverOverlay.render(batch);
         }
-
     }
 
     private void manageLevelProsedure() {
@@ -234,8 +237,6 @@ public class FruitsScreen extends InputAdapter implements Screen {
 
     @Override
     public void render(float delta) {
-
-        //TODO: Oyun içerisinde state geçişleri sağlanmalı
         switch (state){
             case GAME_RUNNING:
                 renderRunning(delta);
@@ -299,10 +300,8 @@ public class FruitsScreen extends InputAdapter implements Screen {
         if(worldTouch.x > Constants.WORLD_SIZE/16 && worldTouch.x < Constants.WORLD_SIZE/16 + Constants.PAUSE_BUTTON_SIZE.x){
             if(worldTouch.y > Constants.WORLD_SIZE/16 && worldTouch.y < Constants.WORLD_SIZE/16 + Constants.PAUSE_BUTTON_SIZE.y){
                 game.showPauseScreen();
-                //state = GAME_PAUSED;
             }
         }
-
         return true;
     }
 

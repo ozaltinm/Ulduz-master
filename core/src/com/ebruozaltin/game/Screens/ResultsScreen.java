@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.ebruozaltin.game.UlduzGame;
 import com.ebruozaltin.game.Utilities.Assets;
@@ -26,11 +27,18 @@ public class ResultsScreen extends InputAdapter implements Screen {
     public static final String TAG = ResultsScreen.class.getName();
 
     UlduzGame game;
-    FitViewport viewport;
+    ExtendViewport viewport;
     SpriteBatch batch;
     BitmapFont font;
     int topScore;
     private final Utils utils;
+    TextureRegion backgroundRegion;
+    TextureRegion homeRegion;
+    TextureRegion closeRegion;
+    TextureRegion boyHoldingRegion;
+    TextureRegion girlHoldingRegion;
+    Vector2 characterSize;
+    Vector2 backgroundSize;
 
     //constructor
     public ResultsScreen(UlduzGame game, int topScore){
@@ -41,7 +49,7 @@ public class ResultsScreen extends InputAdapter implements Screen {
 
     @Override
     public void show() {
-        viewport = new FitViewport(Constants.RESULTS_WORLD_SIZE,Constants.RESULTS_WORLD_SIZE);
+        viewport = new ExtendViewport(Constants.RESULTS_WORLD_SIZE,Constants.RESULTS_WORLD_SIZE);
 
         batch = new SpriteBatch();
         font = new BitmapFont();
@@ -51,23 +59,52 @@ public class ResultsScreen extends InputAdapter implements Screen {
         Gdx.input.setInputProcessor(this);
 
         Assets.instance.init();
+        backgroundRegion = Assets.instance.ulduzAssets.riverModel;
+        homeRegion = Assets.instance.ulduzAssets.home;
+        closeRegion = Assets.instance.ulduzAssets.close;
+        backgroundSize = new Vector2(utils.setScale(backgroundRegion, 1.0f, Constants.MENU_WORLD_SIZE));
+        boyHoldingRegion = Assets.instance.ulduzAssets.boyHoldingCup;
+        girlHoldingRegion = Assets.instance.ulduzAssets.girlHoldingCup;
+        characterSize = new Vector2(utils.setScale(boyHoldingRegion, 2.0f, Constants.RESULTS_WORLD_SIZE));
     }
 
     @Override
     public void render(float delta) {
         viewport.apply();
-        Gdx.gl.glClearColor(0,1,0,1);
+        Gdx.gl.glClearColor(0.5f,0.5f,0.5f,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.setProjectionMatrix(viewport.getCamera().combined);
         batch.begin();
 
+        batch.setColor(1,1,1,0.2f);
+        utils.drawTextureRegion(
+                batch,
+                backgroundRegion,
+                0,
+                0,
+                backgroundSize.x,
+                backgroundSize.y
+        );
+        batch.setColor(1,1,1,1);
+
+        //karakter
+        //TODO:oynanan karaktere göre sonuç karakteri
+        utils.drawTextureRegion(
+                batch,
+                girlHoldingRegion,
+                Constants.FORWARD_MARGIN,
+                Constants.RESULTS_WORLD_SIZE*3/10,
+                characterSize.x,
+                characterSize.y
+        );
+
         //İyi İş Çıkardın!
         font.draw(
                 batch,
                 Constants.RESULT_LABEL,
-                Constants.RESULTS_WORLD_SIZE/2,
-                Constants.RESULTS_WORLD_SIZE*4/5,
+                Constants.RESULTS_WORLD_SIZE*3/4,
+                Constants.RESULTS_WORLD_SIZE*8/10,
                 0,
                 Align.center,
                 false
@@ -78,8 +115,8 @@ public class ResultsScreen extends InputAdapter implements Screen {
         font.draw(
                 batch,
                 topScoreLabel,
-                Constants.RESULTS_WORLD_SIZE/2,
-                Constants.RESULTS_WORLD_SIZE*3/5,
+                Constants.RESULTS_WORLD_SIZE*3/4,
+                Constants.RESULTS_WORLD_SIZE*6/10,
                 0,
                 Align.center,
                 false
@@ -87,25 +124,34 @@ public class ResultsScreen extends InputAdapter implements Screen {
 
         //Buttonların konumunu düzenle
         //Home Button
-        TextureRegion menuRegion = Assets.instance.ulduzAssets.home;
+
+        //Home Button
         utils.drawTextureRegion(
                 batch,
-                menuRegion,
-                Constants.RESULTS_WORLD_SIZE/5,
-                Constants.RESULTS_WORLD_SIZE/5,
-                Constants.HOME_BUTTON_SIZE.x,
-                Constants.HOME_BUTTON_SIZE.y
-                );
+                homeRegion,
+                viewport.getWorldWidth() - 2*Constants.FORWARD_MARGIN,
+                viewport.getWorldHeight() - Constants.FORWARD_MARGIN,
+                Constants.PLAY_BUTTON_SIZE.x,
+                Constants.PLAY_BUTTON_SIZE.y
+        );
 
-
+        //Close button
+        utils.drawTextureRegion(
+                batch,
+                closeRegion,
+                viewport.getWorldWidth() - Constants.FORWARD_MARGIN,
+                viewport.getWorldHeight() - Constants.FORWARD_MARGIN,
+                Constants.PLAY_BUTTON_SIZE.x,
+                Constants.PLAY_BUTTON_SIZE.y
+        );
         //Play Button
         //add text "tekrar oyna"
         TextureRegion playRegion = Assets.instance.ulduzAssets.play;
         utils.drawTextureRegion(
                 batch,
                 playRegion,
-                Constants.RESULTS_WORLD_SIZE/5,
-                Constants.RESULTS_WORLD_SIZE/2,
+                Constants.RESULTS_WORLD_SIZE*5/8,
+                Constants.RESULTS_WORLD_SIZE*4/10,
                 Constants.PLAY_BUTTON_SIZE.x,
                 Constants.PLAY_BUTTON_SIZE.y
         );
@@ -144,13 +190,26 @@ public class ResultsScreen extends InputAdapter implements Screen {
     public boolean touchDown(int screenX, int screenY, int pointer, int button){
         Vector2 worldTouch = viewport.unproject(new Vector2(screenX, screenY));
 
-        //Clicking Home Button
-        if(worldTouch.x > Constants.RESULTS_WORLD_SIZE/5 && worldTouch.x < Constants.RESULTS_WORLD_SIZE/5 + Constants.HOME_BUTTON_SIZE.x){
-            if(worldTouch.y > Constants.RESULTS_WORLD_SIZE/5 && worldTouch.y < Constants.RESULTS_WORLD_SIZE/5 + Constants.HOME_BUTTON_SIZE.y){
+        //Home Button
+        if(worldTouch.x > viewport.getWorldWidth() - 2*Constants.FORWARD_MARGIN
+                && worldTouch.x < viewport.getWorldWidth() - 2*Constants.FORWARD_MARGIN + Constants.PLAY_BUTTON_SIZE.x){
+            if(worldTouch.y > viewport.getWorldHeight() - Constants.FORWARD_MARGIN
+                    && worldTouch.y < viewport.getWorldHeight() - Constants.FORWARD_MARGIN + Constants.PLAY_BUTTON_SIZE.y){
+                game.showMenuScreen();
+            }
+        }
+
+        //close button
+        if(worldTouch.x > viewport.getWorldWidth() - Constants.FORWARD_MARGIN
+                && worldTouch.x < viewport.getWorldWidth()){
+            if(worldTouch.y > viewport.getWorldHeight() - Constants.FORWARD_MARGIN
+                    && worldTouch.y < viewport.getWorldHeight()){
+                //TODO: Oyundan çık
                 game.showMenuScreen();
             }
         }
         //Clicking Play Button
+        //TODO: doğru konumu ver
         else if(worldTouch.x > Constants.RESULTS_WORLD_SIZE/2 && worldTouch.x < Constants.RESULTS_WORLD_SIZE/2 + Constants.PLAY_BUTTON_SIZE.x){
             if(worldTouch.y > Constants.RESULTS_WORLD_SIZE/5 && worldTouch.y < Constants.RESULTS_WORLD_SIZE/5 + Constants.PLAY_BUTTON_SIZE.y){
                 game.showFruitsScreen();

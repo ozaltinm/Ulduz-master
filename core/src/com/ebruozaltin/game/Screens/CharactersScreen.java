@@ -26,8 +26,11 @@ public class CharactersScreen extends InputAdapter implements Screen {
     TextureRegion backgroundRegion;
     TextureRegion boyRegion;
     TextureRegion girlRegion;
-    float width, height;
+    TextureRegion closeRegion;
+    TextureRegion homeRegion;
     float scale = 2.0f;
+    Vector2 characterSize;
+    Vector2 backgroundSize;
 
     public CharactersScreen(UlduzGame game){
         this.game = game;
@@ -45,47 +48,71 @@ public class CharactersScreen extends InputAdapter implements Screen {
         backgroundRegion = Assets.instance.ulduzAssets.riverModel;
         boyRegion = Assets.instance.ulduzAssets.boyStandingLeft;
         girlRegion = Assets.instance.ulduzAssets.girlStandingLeft;
-        width= utils.setScale(boyRegion, scale).x;
-        height = utils.setScale(boyRegion, scale).y;
+        closeRegion = Assets.instance.ulduzAssets.close;
+        homeRegion = Assets.instance.ulduzAssets.home;
+        backgroundSize = new Vector2(utils.setScale(backgroundRegion, 1.0f, Constants.MENU_WORLD_SIZE));
+        characterSize = new Vector2(utils.setScale(boyRegion, 2.0f, Constants.MENU_WORLD_SIZE));
     }
 
     @Override
     public void render(float delta) {
         viewport.apply();
 
-        Gdx.gl.glClearColor(0,0,0,1);
+        Gdx.gl.glClearColor(0.5f,0.5f,0.5f,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.setProjectionMatrix(viewport.getCamera().combined);
         batch.begin();
 
+        batch.setColor(1,1,1,0.2f);
         utils.drawTextureRegion(
                 batch,
                 backgroundRegion,
                 0,
                 0,
-                viewport.getScreenWidth(),
-                viewport.getScreenHeight()
+                backgroundSize.x,
+                backgroundSize.y
         );
 
+        batch.setColor(1,1,1,1);
         //Cin Ali draw
         utils.drawTextureRegion(
                 batch,
                 boyRegion,
-                viewport.getWorldWidth()/4 - width/2,
-                viewport.getWorldHeight()/2 - height/2,
-                width,
-                height
+                viewport.getWorldWidth()/4 - characterSize.x/2,
+                viewport.getWorldHeight()/2 - characterSize.y/2,
+                characterSize.x,
+                characterSize.y
         );
 
         //Cin Ayşe draw
         utils.drawTextureRegion(
                 batch,
                 girlRegion,
-                viewport.getWorldWidth()*3/4 - width/2,
-                viewport.getWorldHeight()/2 - height/2,
-                width,
-                height
+                viewport.getWorldWidth()*3/4 - characterSize.x/2,
+                viewport.getWorldHeight()/2 - characterSize.y/2,
+                characterSize.x,
+                characterSize.y
+        );
+
+        //Home Button
+        utils.drawTextureRegion(
+                batch,
+                homeRegion,
+                viewport.getWorldWidth() - 2*Constants.FORWARD_MARGIN,
+                viewport.getWorldHeight() - Constants.FORWARD_MARGIN,
+                Constants.PLAY_BUTTON_SIZE.x,
+                Constants.PLAY_BUTTON_SIZE.y
+        );
+
+        //Close button
+        utils.drawTextureRegion(
+                batch,
+                closeRegion,
+                viewport.getWorldWidth() - Constants.FORWARD_MARGIN,
+                viewport.getWorldHeight() - Constants.FORWARD_MARGIN,
+                Constants.PLAY_BUTTON_SIZE.x,
+                Constants.PLAY_BUTTON_SIZE.y
         );
 
         batch.end();
@@ -122,18 +149,37 @@ public class CharactersScreen extends InputAdapter implements Screen {
         Vector2 worldTouch = viewport.unproject(new Vector2(screenX, screenY));
 
         //if statement for Cin Ali
-        if(worldTouch.x > viewport.getWorldWidth()/4-width/2 && worldTouch.x < viewport.getWorldWidth()/4+width/2){
-            if(worldTouch.y > viewport.getWorldHeight()/2 - height/2 && worldTouch.y < viewport.getWorldHeight()/2 + height/2){
-                //cin aliyi ata
-                //Constants.Gender.BOY;
+        if(worldTouch.x > viewport.getWorldWidth()/4-characterSize.x/2 && worldTouch.x < viewport.getWorldWidth()/4+characterSize.x/2){
+            if(worldTouch.y > viewport.getWorldHeight()/2 - characterSize.y/2 && worldTouch.y < viewport.getWorldHeight()/2 + characterSize.y/2){
+                //TODO: cin aliyi ata
+                game.showFruitsScreen();
             }
         }
 
         //if statement for cin Ayşe
-        if(worldTouch.x > viewport.getWorldWidth()*3/4 - width/2 && worldTouch.x < viewport.getWorldWidth()*3/4 + width/2){
-            if(worldTouch.y > viewport.getWorldHeight()/2 - height/2 && worldTouch.y < viewport.getWorldHeight() + height/2){
-                //cin ayşeyi ata
-                //Constants.Gender.GIRL;
+        if(worldTouch.x > viewport.getWorldWidth()*3/4 - characterSize.x/2 && worldTouch.x < viewport.getWorldWidth()*3/4 + characterSize.x/2){
+            if(worldTouch.y > viewport.getWorldHeight()/2 - characterSize.y/2 && worldTouch.y < viewport.getWorldHeight() + characterSize.y/2){
+                //TODO: cin ayşeyi ata
+                game.showFruitsScreen();
+            }
+        }
+
+        //Home Button
+        if(worldTouch.x > viewport.getWorldWidth() - 2*Constants.FORWARD_MARGIN
+                && worldTouch.x < viewport.getWorldWidth() - 2*Constants.FORWARD_MARGIN + Constants.PLAY_BUTTON_SIZE.x){
+            if(worldTouch.y > viewport.getWorldHeight() - Constants.FORWARD_MARGIN
+                    && worldTouch.y < viewport.getWorldHeight() - Constants.FORWARD_MARGIN + Constants.PLAY_BUTTON_SIZE.y){
+                game.showMenuScreen();
+            }
+        }
+
+        //close button
+        if(worldTouch.x > viewport.getWorldWidth() - Constants.FORWARD_MARGIN
+                && worldTouch.x < viewport.getWorldWidth()){
+            if(worldTouch.y > viewport.getWorldHeight() - Constants.FORWARD_MARGIN
+                    && worldTouch.y < viewport.getWorldHeight()){
+                //TODO: Oyundan çık
+                game.showMenuScreen();
             }
         }
 

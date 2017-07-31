@@ -92,6 +92,8 @@ public class Assets implements Disposable, AssetErrorListener {
         public final AtlasRegion girlWalk1Left;
         public final AtlasRegion girlWalk2Left;
         public final AtlasRegion girlWalk3Left;
+        public final AtlasRegion girlHoldingCup;
+        public final AtlasRegion boyHoldingCup;
 
         public final AtlasRegion asmaKilit;
         public final AtlasRegion riverModel;
@@ -150,6 +152,9 @@ public class Assets implements Disposable, AssetErrorListener {
             girlWalk1Left = atlas.findRegion(Constants.GIRL_WALK_1_LEFT);
             girlWalk2Left = atlas.findRegion(Constants.GIRL_WALK_2_LEFT);
             girlWalk3Left = atlas.findRegion(Constants.GIRL_WALK_3_LEFT);
+
+            girlHoldingCup = atlas.findRegion(Constants.GIRL_HOLDING_CUP);
+            boyHoldingCup = atlas.findRegion(Constants.BOY_HOLDING_CUP);
 
             Array<TextureRegion> walkingLeftFrames = new Array<TextureRegion>();
             walkingLeftFrames.add(boyWalk1Left);

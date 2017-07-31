@@ -334,17 +334,69 @@ public class MenuScreen extends InputAdapter implements Screen {
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         Vector2 worldTouch = viewport.unproject(new Vector2(screenX,screenY));
 
-        //Clicking Play Button
-        if(worldTouch.x > Constants.MENU_WORLD_SIZE/5 && worldTouch.x < Constants.MENU_WORLD_SIZE/5 + Constants.PLAY_BUTTON_SIZE.x){
-            if(worldTouch.y > Constants.MENU_WORLD_SIZE/5 && worldTouch.y < Constants.MENU_WORLD_SIZE/5 + Constants.PLAY_BUTTON_SIZE.y){
-                game.showFruitsScreen();
-            }
-        }
-
         //Clicking TopScore Button
         //TODO: Write this if clause, first complete topScoreScreen
         //Öncesinde veritabanı bağlantısı yapılmalı, ardından verileri çekebiliriz.
+        if(worldTouch.x > Constants.TOP_SCORE_MARGIN && worldTouch.x < Constants.TOP_SCORE_MARGIN + Constants.TOPSCORE_BUTTON_SIZE.x){
+            if(worldTouch.y > Constants.TOP_SCORE_MARGIN && worldTouch.y < Constants.TOP_SCORE_MARGIN + Constants.TOPSCORE_BUTTON_SIZE.y){
+                game.showTopScoreScreen();
+            }
+        }
 
+        //nasıl oynanır?
+        if(worldTouch.x > Constants.TOP_SCORE_MARGIN*2 + Constants.TOPSCORE_BUTTON_SIZE.x
+                && worldTouch.y < Constants.TOP_SCORE_MARGIN*2 + Constants.TOPSCORE_BUTTON_SIZE.x + buttonSize.x){
+            if(worldTouch.y > Constants.TOP_SCORE_MARGIN && worldTouch.y < Constants.TOP_SCORE_MARGIN + buttonSize.y){
+                game.showHowToPlayScreen();
+            }
+        }
+
+        //rakamlar
+        if(worldTouch.x > Constants.LOCK_MARGIN+Constants.TOPSCORE_BUTTON_SIZE.x*3/2
+                && worldTouch.x < Constants.LOCK_MARGIN + Constants.TOPSCORE_BUTTON_SIZE.x*2 + level1Layout.width){
+            if(worldTouch.y > Constants.MENU_WORLD_SIZE*8/10
+                    && worldTouch.y < Constants.MENU_WORLD_SIZE*8/10 + Constants.TOPSCORE_BUTTON_SIZE.y ){
+                //TODO: 1. seviyeye git
+                game.showCharactersScreen();
+            }
+        }
+
+        //toplama
+        if(worldTouch.x > Constants.LOCK_MARGIN+Constants.TOPSCORE_BUTTON_SIZE.x*3/2
+                && worldTouch.y < Constants.LOCK_MARGIN + Constants.TOPSCORE_BUTTON_SIZE.x*2 + level2Layout.width){
+            if(worldTouch.y > Constants.MENU_WORLD_SIZE*6/10
+                && worldTouch.y < Constants.MENU_WORLD_SIZE*6/10 + Constants.TOPSCORE_BUTTON_SIZE.y){
+                //TODO: 2.seviyeye git
+                game.showCharactersScreen();
+            }
+        }
+
+        //çıkarma
+        if(worldTouch.x > Constants.LOCK_MARGIN+Constants.TOPSCORE_BUTTON_SIZE.x*3/2
+                && worldTouch.x < Constants.LOCK_MARGIN + Constants.TOPSCORE_BUTTON_SIZE.x*2 + level2Layout.width){
+            if(worldTouch.y > Constants.MENU_WORLD_SIZE*4/10
+                    && worldTouch.y < Constants.MENU_WORLD_SIZE*4/10 + Constants.TOPSCORE_BUTTON_SIZE.y){
+                game.showCharactersScreen();
+            }
+        }
+
+        //örüntü
+        if(worldTouch.x > Constants.LOCK_MARGIN+Constants.TOPSCORE_BUTTON_SIZE.x*3/2
+                && worldTouch.x < Constants.LOCK_MARGIN + Constants.TOPSCORE_BUTTON_SIZE.x*2 + level4Layout.width){
+            if( worldTouch.y > Constants.MENU_WORLD_SIZE*2/10
+                    && worldTouch.y < Constants.MENU_WORLD_SIZE*2/10 + Constants.TOPSCORE_BUTTON_SIZE.y){
+                game.showCharactersScreen();
+            }
+        }
+
+        //close button
+        if(worldTouch.x > viewport.getWorldWidth() - Constants.FORWARD_MARGIN
+                && worldTouch.x < viewport.getWorldWidth()){
+            if(worldTouch.y > viewport.getWorldHeight() - Constants.FORWARD_MARGIN
+                    && worldTouch.y < viewport.getWorldHeight()){
+                //TODO: uygulamadan çık
+            }
+        }
 
         return true;
     }

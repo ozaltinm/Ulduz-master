@@ -45,6 +45,8 @@ public class Constants {
     public static final String SOUND_OPEN = "sound-open";
     public static final String TIK_BUTTON = "tik-button";
 
+    public static final String GIRL_HOLDING_CUP = "ayse-kupa";
+    public static final String BOY_HOLDING_CUP = "ali-kupa";
 
     public static final String BOY_STANDING_RIGHT = "boy-standing-right";
     public static final String BOY_STANDING_LEFT = "boy-standing-left";
@@ -145,7 +147,7 @@ public class Constants {
     public static final float RESULTS_WORLD_SIZE = 480.0f;
     public static final float RESULTS_LABEL_SCALE = 2.0f;
 
-    public static final String RESULT_LABEL = "İyi İş Çıkardın!";
+    public static final String RESULT_LABEL = "iyi is Cikardin!";
 
     //assets
 
@@ -156,13 +158,14 @@ public class Constants {
 
     //PAUSE
     public static final float PAUSE_WORLD_SIZE = 480.0f;
-    public static final String PAUSE_LABEL = "Oyun duraklatıldı";
+    public static final String PAUSE_LABEL = "Oyun duraklatildi";
     public static final float PAUSE_LABEL_SCALE = 4.0f;
 
     //TOP_SCORE
     public static final float TOPSCORE_WORLD_SIZE = 480.0f;
     public static final float TOPSCORE_LABEL_SCALE = 2.0f;
-
+    public static final float TOPSCORE_MARGIN = 360.0f;
+    public static final float TOPSCORE_MARGIN_2 = 340.0f;
 
     //STORE DATA
     public static final Preferences prefs = Gdx.app.getPreferences("My Preferences");
